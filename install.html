@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>APP应用下载</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <style type="text/css">
+        html,body,figure,h2,h3,dl,dt,dd,img,ul,li,p {
+            margin: 0; padding: 0; display: block;
+        }
+        * {
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+        }
+        body {
+            font-size: 16px;
+            font-family: Arial, "Microsoft YaHei", Helvetica, sans-serif;
+            background: #307fe1;
+        }
+        .bg{
+            position: absolute;
+            top:0;
+            width: 100%;
+            z-index: -9999;
+        }
+        .bg figure{
+            max-width: 320px;
+            margin: 0 auto;
+            z-index: -9999;
+        }
+
+        .fan{
+            top:auto;
+            bottom: 0;
+        }
+        .fan img{
+            -webkit-transform:scaleY(-1);
+        }
+
+        .slogan{
+            padding-top: 76px;
+        }
+        .slogan figure{
+            width:80px;
+            margin: 0 auto;
+        }
+
+        .slogan span{
+            text-align: center;
+            color: #fff;
+            display: block;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        .dlbtns{
+            margin: 45px 0 0;
+            width: 100%;
+        }
+
+        .btn{
+            display: none;
+            margin-bottom: 33px;
+        }
+        
+        .btn a{
+            display: block;
+            width: 140px;
+            height: 45px;
+            background-color: #fff;
+            color: #fff;
+            background-size: 105px 20px;
+            margin: 0 auto;     
+        }
+
+        .btn p{
+            font-size: 0.5625em;
+            color: #fff;
+            margin-top: 6px;
+            text-align: center;
+        }
+
+        .iphone{
+            background: url(https://pitter2416.github.io/localhost_install_ipa/imgs/download_logo.png) no-repeat center;
+        }
+        .android{
+            background: url(https://pitter2416.github.io/localhost_install_ipa/imgs/download_logo.png) no-repeat center;
+        }
+        
+        .tips-content{
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            display: none;
+        }
+        .tips{
+            width: 100%;
+            text-align: left;
+            color: #ffffff;
+            margin-top: 30px;
+            font-size: 14px;
+            line-height: 24px;
+        }
+        .tips2{
+            margin-top: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div>
+        <div class="slogan">
+            <figure><img src="https://pitter2416.github.io/localhost_install_ipa/imgs/download_logo.png" width="80" height="80"></figure>
+            <span class="subtitle">我是一个app</span>
+        </div>
+        <div class="dlbtns">            
+            <div class="btn" id="andCel">
+                <a class="android" id="andBtn"></a>
+            </div>
+            <div class="btn" id="iosCel">
+                <a class="iphone" id="iosBtn"></a>
+            </div>
+        </div>
+        
+        <div id="J_Tips" class="tips-content">
+            <p class="tips">1.点击"安装"按钮后,应用会在手机桌面自动进行下载安装。</p>
+            <p class="tips tips2">
+                2.首次安装完成后,请在"设置"-"通用"-"设备管理"(或"描述文件")-点击"Shenzhen Inovance Technology Co., Ltd"-点击信任。
+            </p>
+        </div>
+    </div>
+    <script src="https://pitter2416.github.io/localhost_install_ipa/js/zepto.min.js"></script>
+    <script type="text/javascript">
+
+        var iosCel = document.getElementById("iosCel");
+        var andCel = document.getElementById("andCel");
+        var tipsElem = document.getElementById("J_Tips");
+
+
+        function doclick(obj){
+            document.getElementById(obj).onclick = function(){
+                jumptodl(obj);
+            }
+        }
+
+        function jumptodl(obj){
+
+            if(obj == "iosBtn"){
+                if(isWeixinBrowser() || isQQBrowser()){
+                    if ($('#invokeMask').length === 0) {
+                        $('body').append('<div id="invokeMask"></div>');
+                        // 显示默认图片
+                        $('#invokeMask').css({
+                            'background-color': 'rgba(0,0,0, .8)',
+                            'top': 0,
+                            'bottom': 0,
+                            'width': '100%',
+                            'position': 'fixed',
+                            'background-image': 'url(https://pitter2416.github.io/localhost_install_ipa/imgs/download_logo.png)',
+                            'background-repeat': 'no-repeat',
+                            'background-size': 'contain'
+                        });
+                    }
+
+                    $('#invokeMask').removeClass('hide').addClass('show');
+                }else{
+					// document.write('ios');
+                    window.location.href = 'https://pitter2416.github.io/localhost_install_ipa/app.plist';
+                }
+
+            }else{
+                
+                if(isWeixinBrowser() || isQQBrowser()){
+                    if ($('#invokeMask').length === 0) {
+                        $('body').append('<div id="invokeMask"></div>');
+                        // 显示默认图片
+                        $('#invokeMask').css({
+                            'background-color': 'rgba(0,0,0, .8)',
+                            'top': 0,
+                            'bottom': 0,
+                            'width': '100%',
+                            'position': 'fixed',
+                            'background-image': 'url(https://pitter2416.github.io/localhost_install_ipa/imgs/download_logo.png)',
+                            'background-repeat': 'no-repeat',
+                            'background-position': '10px 10px 10px 10px',
+                            'background-size': 'contain'
+                        });
+                    }
+
+                    $('#invokeMask').removeClass('hide').addClass('show');
+                }else{
+                    // document.write('android');
+					var url = "https://appmanage.iotdataserver.net/uwebVersionManage/appManage/download-file?appHisId=2608&customerCode=0000102084";
+					$.ajax({ url: url, async: true, dataType:'json', success: function(result){
+						if(result.success==1){
+							window.location.href = result.data.packageUrl;
+						}
+					}});
+                }
+            }
+        }
+
+        function isWeixinBrowser(){
+            var ua = navigator.userAgent.toLowerCase();
+            return (/micromessenger/.test(ua)) ? true : false ;
+        }
+        
+        function isQQBrowser(){
+            var ua = navigator.userAgent.toLowerCase();
+            return (/ qq/.test(ua)) ? true : false ;
+        }
+
+
+        function ctlBtnShow(){
+            if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { 
+				 iosCel.style.display = "block";
+				 tipsElem.style.display = "block";
+            } else if (/(Android)/i.test(navigator.userAgent)) {
+				andCel.style.display = "block";
+            }
+        }
+
+        function getParams(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        function autoClickIosBtn() {
+            var that = this;
+            setTimeout(function() {
+                if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                    //window.location.href = "itms-services://?action=download-manifest&url=https://security.dataserver.cn/iosDeploy/uwebMob/app.plist";
+                    // document.getElementById('iosBtn').innerHTML = '正在下载中。。。';
+                    that.jumptodl("iosBtn");
+                }else if (/(Android)/i.test(navigator.userAgent)) {
+                    that.jumptodl("andBtn");
+                }
+            }, 1000);
+            
+        }
+
+        (function(){
+
+            //判断平台，显示按钮
+            ctlBtnShow();
+
+            //点击
+            doclick("iosBtn");
+            doclick("andBtn");
+            
+            autoClickIosBtn();
+
+        })();
+        
+    </script>
+</body>
+</html>
